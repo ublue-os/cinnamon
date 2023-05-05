@@ -6,7 +6,7 @@ on:
       - '**.txt'
   merge_group:    
   schedule:
-    - cron: '20 21 * * *'  # 9:20pm everyday
+    - cron: '20 22 * * *'  # 10:20pm everyday
   workflow_dispatch:
 env:
     IMAGE_BASE_NAME: cinnamon
