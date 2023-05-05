@@ -1,9 +1,6 @@
 name: Build and Push Image
 on:
   pull_request:
-    paths-ignore:
-      - '**.md'
-      - '**.txt'
   merge_group:    
   schedule:
     - cron: '20 22 * * *'  # 10:20pm everyday
