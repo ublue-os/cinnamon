@@ -2,7 +2,7 @@
     "all": {
         "include": {
             "all": [
-		"NetworkManager-adsl",
+		        "NetworkManager-adsl",
                 "NetworkManager-bluetooth",
                 "NetworkManager-iodine-gnome",
                 "NetworkManager-l2tp-gnome",
@@ -20,7 +20,6 @@
                 "cinnamon",
                 "cinnamon-control-center",
                 "cinnamon-screensaver",
-                "dnfdragora-updater",
                 "eom",
                 "firefox",
                 "firewall-config",
@@ -66,8 +65,7 @@
                 "xdg-user-dirs-gtk",
                 "xed",
                 "xfburn",
-                "xreader",
-                "wireplumber"		
+                "xreader"		
             ]
         },
         "exclude": {
