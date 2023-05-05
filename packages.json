@@ -1,0 +1,33 @@
+{
+    "all": {
+        "include": {
+            "all": [
+		"nemo", 
+		"slick-greeter"
+		
+            ]
+        },
+        "exclude": {
+            "all": [
+            ]
+        }
+    },
+    "37": {
+        "include": {
+            "all": [
+	    ]
+        },
+        "exclude": {
+            "all": []
+        }
+    },
+    "38": {
+        "include": {
+            "all": []
+        },
+        "exclude": {
+            "all": [
+	    ]
+        }
+    }
+}
