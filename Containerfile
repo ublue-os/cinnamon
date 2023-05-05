@@ -26,7 +26,7 @@ RUN /tmp/build.sh && \
 FROM fedora:38 as cinnamonList
 
 RUN dnf group info \
-        cinnammon-desktop \
+        cinnamon-desktop \
     | awk '/^  /' \
     | xargs dnf group info -v  2>/dev/null \
     | awk '$2 == "fedora" || $2 == "updates" || $2 == "@System"{print $1}'  > /cinnamon.txt
