@@ -6,6 +6,9 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-38}"
 
 FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
 
+COPY etc /etc
+RUN chmod +x /etc/ublue-lightdm-workaround.sh
+
 ARG IMAGE_NAME="${IMAGE_NAME}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
 
@@ -14,6 +17,8 @@ ADD build.sh /tmp/build.sh
 
 RUN /tmp/build.sh && \
     rm -rf /tmp/* /var/* && \
+    systemctl enable lightdm && \
+    systemctl enable ublue-lightdm-workaround && \
     ostree container commit && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
