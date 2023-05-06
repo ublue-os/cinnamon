@@ -26,6 +26,7 @@
                 "gnome-calculator",
                 "gnome-disk-utility",
                 "gnome-screenshot",
+                "gnome-software",
                 "gnome-system-monitor",
                 "gnome-terminal",
                 "gstreamer1-plugins-ugly-free",
