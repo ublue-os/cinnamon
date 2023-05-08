@@ -16,9 +16,11 @@ ADD packages.json /tmp/packages.json
 ADD build.sh /tmp/build.sh
 
 RUN /tmp/build.sh && \
+    pip install --prefix=/usr yafti && \
     rm -rf /tmp/* /var/* && \
     systemctl enable lightdm && \
     systemctl enable ublue-lightdm-workaround && \
+    systemctl enable touchegg && \
     ostree container commit && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
