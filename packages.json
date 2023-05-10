@@ -2,6 +2,13 @@
     "all": {
         "include": {
             "all": [
+                "gnome-boxes",
+                "gnome-software",
+                "python3-pip",
+                "timeshift",
+                "touchegg",
+                "xdotool",
+
                 "NetworkManager-adsl",
                 "NetworkManager-bluetooth",
                 "NetworkManager-iodine-gnome",
@@ -21,12 +28,10 @@
                 "cinnamon-control-center",
                 "cinnamon-screensaver",
                 "eom",
-                "firefox",
                 "firewall-config",
                 "gnome-calculator",
                 "gnome-disk-utility",
                 "gnome-screenshot",
-                "gnome-software",
                 "gnome-system-monitor",
                 "gnome-terminal",
                 "gstreamer1-plugins-ugly-free",
@@ -57,7 +62,6 @@
                 "slick-greeter",
                 "slick-greeter-cinnamon",
                 "system-config-printer",
-                "thunderbird",
                 "tmux",
                 "tmux-powerline",
                 "transmission",
@@ -71,6 +75,8 @@
         },
         "exclude": {
             "all": [
+                "firefox",
+                "firefox-langpacks"
             ]
         }
     },
