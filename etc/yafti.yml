@@ -13,10 +13,13 @@ screens:
     source: yafti.screen.consent
     values:
       title: Welcome, Traveler
+      show_terminal: true
       condition:
         run: flatpak remotes --system | grep fedora
       description: |
-        WARNING: This will remove your existing Flatpaks if you are rebasing! If you do not want to do this exit the installer.
+        WARNING: This will remove your existing Flatpaks if you are rebasing! 
+        If you do not want to do this, then you can exit the installer. 
+        If you accept, please wait a few seconds for the operation to complete.
       actions:
         - run: /usr/lib/fedora-third-party/fedora-third-party-opt-out
         - run: /usr/bin/fedora-third-party disable
@@ -34,12 +37,14 @@ screens:
           default: true
           packages:
           - Backup: org.gnome.DejaDup
+          - Disk Usage Analyzer: org.gnome.baobab
           - Fedora Media Writer: org.fedoraproject.MediaWriter
-          - Mozilla Firefox: org.mozilla.firefox
           - Flatseal Permissions Manager: com.github.tchx84.Flatseal
+          - Mozilla Firefox: org.mozilla.firefox
         Themes:
           description: Cinnamon (Mint-Y) themes for flatpak apps (not supported in all apps)
           default: true
+          packages:
           - Mint-Y: org.gtk.Gtk3theme.Mint-Y
           - Mint-Y-Aqua: org.gtk.Gtk3theme.Mint-Y-Aqua
           - Mint-Y-Blue: org.gtk.Gtk3theme.Mint-Y-Blue
@@ -75,13 +80,8 @@ screens:
           - Google Chrome: com.google.Chrome
           - Microsoft Edge: com.microsoft.Edge
           - Opera: com.opera.Opera
-        Programming:
-          description: Support for writing code
-          default: false 
-          packages:
-          - VS Code: com.visualstudio.code
-        Office:
-          description: Bow to Capitalism
+        Productivity:
+          description: Write papers, emails, or code
           default: false
           packages:
           - LibreOffice: org.libreoffice.LibreOffice
@@ -90,8 +90,9 @@ screens:
           - Slack: com.slack.Slack
           - Standard Notes: org.standardnotes.standardnotes
           - Thunderbird Email: org.mozilla.Thunderbird
+          - Visual Studio Code: com.visualstudio.code
         Gaming:
-          description: "Rock and Stone!"
+          description: Game on!
           default: false
           packages:
           - Bottles: com.usebottles.bottles
@@ -125,4 +126,5 @@ screens:
         - "Join the Discord Community":
             run: /usr/bin/xdg-open https://discord.gg/XjG48C7VHx 
       description: |
-        Thanks for trying UBlue Cinnamon, we hope you enjoy it!
+        Thanks for trying UBlue Cinnamon. We hope you enjoy it! 
+        You may need to reboot before installed apps will appear in the menu.
