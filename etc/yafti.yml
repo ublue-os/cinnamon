@@ -37,7 +37,10 @@ screens:
           default: true
           packages:
           - Backup: org.gnome.DejaDup
+          - Calculator: org.gnome.Calculator
+          - Celluloid Video Player: io.github.celluloid_player.Celluloid
           - Disk Usage Analyzer: org.gnome.baobab
+          - Photo Organizer: org.gnome.Shotwell
           - Fedora Media Writer: org.fedoraproject.MediaWriter
           - Flatseal Permissions Manager: com.github.tchx84.Flatseal
           - Mozilla Firefox: org.mozilla.firefox
@@ -80,8 +83,16 @@ screens:
           - Google Chrome: com.google.Chrome
           - Microsoft Edge: com.microsoft.Edge
           - Opera: com.opera.Opera
+        Communication:
+          description: Apps for emails, chatting, and sharing
+          default: false
+          packages:
+          - HexChat: io.github.Hexchat
+          - Pidgin: im.pidgin.Pidgin
+          - Thunderbird Email: org.mozilla.Thunderbird
+          - Transmission: com.transmissionbt.Transmission
         Productivity:
-          description: Write papers, emails, or code
+          description: Create papers, spreadsheets, or code
           default: false
           packages:
           - LibreOffice: org.libreoffice.LibreOffice
