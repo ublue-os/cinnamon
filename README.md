@@ -17,4 +17,3 @@ or if you have an NVIDIA GPU:
 ## Caveats
 
 - This is a test image and is WIP
-- This image is up for adoption! If you want to work with Fedora and Cinnamon to make an ostree build of Cinnamon in Fedora itself let us know and we can help get you started
