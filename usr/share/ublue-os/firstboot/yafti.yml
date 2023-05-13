@@ -74,7 +74,7 @@ screens:
           description: Configure touchpad gestures
           default: false
           packages:
-          - Touche: com.github.joseexposito.touche
+          - Touché: com.github.joseexposito.touche
         Web Browsers:
           description: Additional browsers to complement Firefox
           default: false
