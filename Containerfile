@@ -7,6 +7,7 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-38}"
 FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
 
 COPY etc /etc
+COPY usr /usr
 RUN chmod +x /etc/ublue-lightdm-workaround.sh
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
@@ -24,4 +25,7 @@ RUN /tmp/build.sh && \
     ostree container commit && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
+
+COPY config/touchegg.conf /usr/share/touchegg
+
 RUN ostree container commit
