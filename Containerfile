@@ -26,6 +26,8 @@ RUN /tmp/build.sh && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
 
+#Need to copy this separately from when we copy over /usr
+#because it gets overwitten when touchegg is installed.
 COPY config/touchegg.conf /usr/share/touchegg
 
 RUN ostree container commit
