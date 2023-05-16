@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#####Keyboard bindings#######
+#Uses 'gsettings set' and 'dconf write' to customize various system dconf settings
+#Debug with 'dconf watch /'
+
+#####keyboard bindings#######
 ##Basic idea: 
 ##J => terminal
 ##K => file browser
@@ -21,7 +24,7 @@ dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding
 
 ##Move between windows for a given app
 dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/name "'focus next terminal'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/command "'focus-next-window right Terminal'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/command "'focus-next-window right terminal'" 
 dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/binding "['<Alt>j']"
 
 dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/name "'focus next file browser'"
@@ -56,3 +59,26 @@ dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom8/binding
 
 gsettings set org.cinnamon.desktop.keybindings custom-list "['custom0', 'custom1', 'custom2', 'custom3', 
     'custom4', 'custom5', 'custom6', 'custom7', 'custom8']"
+
+#Set up gnome-terminal prefs
+gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+
+dconf write /org/gnome/terminal/legacy/keybindings/new-tab "'<Control>t'"
+dconf write /org/gnome/terminal/legacy/keybindings/close-tab "'<Control>w'"
+dconf write /org/gnome/terminal/legacy/keybindings/detach-tab "'<Control><Super>Down'"
+dconf write /org/gnome/terminal/legacy/keybindings/paste "'<Control>v'"
+dconf write /org/gnome/terminal/legacy/keybindings/close-window "'<Control><Shift>w'"
+dconf write /org/gnome/terminal/legacy/keybindings/next-tab "'<Control>Right'"
+dconf write /org/gnome/terminal/legacy/keybindings/prev-tab "'<Control>Left'"
+dconf write /org/gnome/terminal/legacy/keybindings/move-tab-right "'<Control><Shift>Right'"
+dconf write /org/gnome/terminal/legacy/keybindings/move-tab-left "'<Control><Shift>Left'"
+dconf write /org/gnome/terminal/legacy/keybindings/toggle-menubar "'<Control><Shift>m'"
+
+#Get the defauolt profile to change profile settings
+profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
+profile=${profile:1:-1} # remove leading and trailing single quotes
+dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/bold-is-bright true
+
+
+#Set up xed (text editor) prefs
+gsettings set org.x.editor.preferences.editor scheme "'oblivion'"
