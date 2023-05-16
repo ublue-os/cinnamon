@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#To use this, add the following to the end of .bashrc
+# if [ $GNOME_TERMINAL_SCREEN ]; then
+#   . ~/scripts/on_open_terminal.sh
+# fi
+
+#NOTE: This approach isn't perfect. Notably, if you're somewhere in the system directories
+#for your container and you make a new tab, you'll end up elsewhere in /run/host in the new tab.
+#You can fix this issue by adding the following to the end of the .bashrc file in your
+#container's home directory:
+#  cd $(echo $(pwd) | sed -e 's/\/run\/host*//g')
+#
+# But this only works if there's a match to wherever you are in the host system directory.
+# Otherwise, your directory resets to your home.
+
+rows=2
+cols=4
+
+#Get our current row
+ws=$(xdotool get_desktop)
+col=$(expr $ws % $cols)
+
+IFS=',' read -a assignments < ~/homes/workspaces
+
+#Get our current assignment
+assignment=${assignments[$col]} 
+
+if [ $assignment ]; then
+  if [ $(pwd) = ~ ]; then
+    distrobox enter -nw $assignment
+  else
+    distrobox enter $assignment
+  fi
+fi

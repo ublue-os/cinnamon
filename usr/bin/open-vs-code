@@ -1,0 +1,22 @@
+#!/bin/bash
+
+rows=2
+cols=4
+
+#Get our current row
+ws=$(xdotool get_desktop)
+col=$(expr $ws % $cols)
+
+#readarray -t assignments < ~/homes/workspaces
+IFS=',' read -a assignments < ~/homes/workspaces
+
+#Get our current assignment
+assignment=${assignments[$col]} 
+
+if [ $assignment ]; then
+  distrobox enter -nw $assignment -- code
+else
+  code
+fi
+
+echo $assignment

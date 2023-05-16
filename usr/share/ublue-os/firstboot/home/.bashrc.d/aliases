@@ -1,0 +1,13 @@
+alias code='flatpak run com.visualstudio.code'
+alias google-chrome='flatpak run com.google.Chrome'
+
+#Shortcut for 'podman run -it --rm <image> <optional additional args>
+function prun() {
+    image=$1
+
+    if [ $2 ]; then
+        podman run -it --rm $image ${@:2}
+    else
+        podman run -it --rm $image /bin/bash
+    fi
+}

@@ -60,10 +60,8 @@
                 "tmux",
                 "tmux-powerline",
                 "vim-powerline",
-                "xawtv",
                 "xdg-user-dirs-gtk",
                 "xed",
-                "xfburn",
                 "xreader"
             ]
         },

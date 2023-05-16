@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+
+#This scripts focuses the next window on the current workspace. It takes either one or
+#two command line arguments:
+#1) The sort order for determining what counts as next. Options are 'up', 'down', left', 'right'
+#2) (optional) A namestring. If this is provied, only windows whose application name
+#   includes this namestring will be considered. Typical examples include:
+#   nemo, Terminal, Chrome, Code
+
+import sys
+import os
+import subprocess
+
+def os_command(cmd):
+  """Runs a command in the bash shell and returns the results as a list of strings."""
+  byte_result = subprocess.run(cmd.split(), stdout=subprocess.PIPE)
+  print(f"{cmd=} {byte_result=}")
+  result = byte_result.stdout.decode('utf-8').split("\n")
+  result.remove("")
+  return result
+
+def activate(window):
+  """Make a window the current focus."""
+  os.system(f"xdotool windowactivate {window}")
+  os.system(f"xdotool windowraise {window}")
+  os.system(f"xdotool windowfocus {window}")
+  
+def get_min_x(window):
+  """Returns the min x value for a window."""
+  return int(os_command(f"xdotool getwindowgeometry --shell {window}")[1][2:])
+
+def get_min_y(window):
+  """Returns the min y value for a window."""
+  return int(os_command(f"xdotool getwindowgeometry --shell {window}")[2][2:])
+
+def focus_next_window(sort_order, namestring = "."):
+  """
+  Focus the next window in the current workspace. If namestring is provided, consider only
+  windows whose application name includes that namestring.
+  The meaning of "next" determines on the sort_order, which can be 'up', 'down', 'left', or
+  'right'.
+  """
+  ws = os_command('xdotool get_desktop')[0]
+  windows = os_command(f"xdotool search --desktop {ws} --class {namestring}")
+  active = os_command(f"xdotool getactivewindow")[0]
+
+  windows = [{'id': win, 'x': get_min_x(win), 'y': get_min_y(win)} for win in windows]
+
+  match sort_order:
+    case 'right':
+      windows.sort(key = lambda win: win['x'] * 10000 + win['y'])
+    case 'left':
+      windows.sort(reverse = True, 
+                   key = lambda win: win['x'] * 10000 + win['y'])
+    case 'down':
+      windows.sort(key = lambda win: win['y'] * 10000 + win['x'])
+    case 'up':
+      windows.sort(reverse = True, 
+                   key = lambda win: win['y'] * 10000 + win['x'])
+
+  windows = [win['id'] for win in windows]
+
+  if not(windows):
+    pass
+  elif active in windows:
+    i = windows.index(active)
+    activate(windows[(i + 1) % len(windows)])
+  else:
+    activate(windows[0])
+
+  
+if __name__ == "__main__":
+  if len(sys.argv) > 2:
+    focus_next_window(sys.argv[1], sys.argv[2])
+  else:
+    focus_next_window(sys.argv[1])
