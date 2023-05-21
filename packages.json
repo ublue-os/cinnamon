@@ -2,6 +2,7 @@
     "all": {
         "include": {
             "all": [
+                "docker",
                 "gnome-boxes",
                 "gnome-software",
                 "python3-pip",

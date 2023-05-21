@@ -1,6 +1,28 @@
 alias code='flatpak run com.visualstudio.code'
 alias google-chrome='flatpak run com.google.Chrome'
 
+#Shortcut for 'docker run -it --rm <image> <optional additional args>
+#Run as 'drun <image> <optional additional args>'
+function drun() {
+    image=$1
+
+    if [ $2 ]; then
+        command=${@:2}
+    else
+        command=/bin/bash
+    fi
+    
+    xhost +
+    
+    docker run -it --rm \
+        --privileged \
+        --network=host \
+        $image \
+        $command \
+    
+    xhost -
+}
+
 #Shortcut for 'podman run -it --rm <image> <optional additional args>
 #Run as 'prun <image> <optional additional args>'
 function prun() {

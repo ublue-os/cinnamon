@@ -19,12 +19,17 @@ ADD build.sh /tmp/build.sh
 RUN /tmp/build.sh && \
     pip install --prefix=/usr yafti && \
     rm -rf /tmp/* /var/* && \
+    systemctl enable docker && \
     systemctl enable lightdm && \
     systemctl enable ublue-lightdm-workaround && \
     systemctl enable touchegg && \
     ostree container commit && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
+
+#Make it so users can be added to the docker group
+#RUN grep -E '^docker:' /usr/lib/group 
+#>> /etc/group
 
 #Need to copy this separately from when we copy over /usr
 #because it gets overwitten when touchegg is installed.
