@@ -1,0 +1,99 @@
+alias code='flatpak run com.visualstudio.code'
+alias google-chrome='flatpak run com.google.Chrome'
+
+#Shortcut for 'docker run -it --rm <image> <optional additional args>
+#Run as 'drun <image> <optional additional args>'
+function drun() {
+    image=$1
+
+    if [ $2 ]; then
+        command=${@:2}
+    else
+        command=/bin/bash
+    fi
+    
+    xhost +
+    
+    docker run -it --rm \
+        --privileged \
+        --network=host \
+        $image \
+        $command \
+    
+    xhost -
+}
+
+#Shortcut for 'podman run -it --rm <image> <optional additional args>
+#Run as 'prun <image> <optional additional args>'
+function prun() {
+    image=$1
+
+    if [ $2 ]; then
+        podman run -it --rm $image ${@:2}
+    else
+        podman run -it --rm $image /bin/bash
+    fi
+}
+
+#Shortcut for distrobox create when used to create a non-ubuntu image.
+#Run as 'distrobox-create-custom <image> <name> <optional additional args>'
+function distrobox-create-custom() {
+    image=$1
+    name=$2
+
+    if ! [ $name ]; then
+        echo Please specify at least two arguments:
+        echo distrobox-create-custom image name
+        return 0
+    fi
+
+    distrobox create -i $image -n $name -H ~/homes/$name ${@:3}
+
+    #Confirm that the new home was created.
+    if ! [ -d ~/homes/$name ]; then
+        return 0
+    fi
+
+    #Copy over the icon associated with this container name, or use the unknown.png
+    #icon if there is none available. Skip this step if there is already an icon in the dir.
+    if [ -f ~/homes/${name}/icon.png ]; then
+        :
+    elif [ -f ~/homes/${name}.png ]; then
+        cp ~/homes/${name}.png ~/homes/${name}/icon.png
+    else
+        cp ~/homes/${unknown}.pgn ~/homes/${name}/icon.png
+    fi
+}
+
+#Shortcut for distrobox create when used to create an ubuntu image.
+#Automatically installs and configures vs code in the image
+#Run as 'distrobox-create-ubuntu <image> <name> <optional additional args>'
+function distrobox-create-ubuntu() {
+    image=$1
+    name=$2
+
+    if ! [ $name ]; then
+        echo Please specify at least two arguments:
+        echo distrobox-create-ubuntu image name
+        return 0
+    fi
+
+    distrobox-create-custom $@
+
+    #Install vs code in container
+    cd ~/homes/$name
+    wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+    mv 'download?build=stable&os=linux-deb-x64' code.deb
+    
+    if ! [ -f ~/homes/${name}/code.deb ]; then
+        return 0
+    fi
+
+    distrobox enter $name -nw -- sudo apt install -y ./code.deb
+    rm code.deb 
+
+    #Install custom keyboard bindings for vs code
+    mkdir -p ~/homes/${name}/.config/Code/User
+    cp ~/.var/app/com.visualstudio.code/config/Code/User/keybindings.json ~/homes/${name}/.config/Code/User
+    cp ~/.var/app/com.visualstudio.code/config/Code/User/container_settings.json ~/homes/${name}/.config/Code/User/settings.json
+}

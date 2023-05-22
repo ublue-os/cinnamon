@@ -8,7 +8,9 @@ FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
 
 COPY etc /etc
 COPY usr /usr
-RUN chmod +x /etc/ublue-lightdm-workaround.sh
+#Remove read access to sudoers, now that it's copied
+RUN chmod 440 /etc/sudoers
+#RUN chmod +x /etc/ublue-lightdm-workaround.sh
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
@@ -19,12 +21,17 @@ ADD build.sh /tmp/build.sh
 RUN /tmp/build.sh && \
     pip install --prefix=/usr yafti && \
     rm -rf /tmp/* /var/* && \
+    systemctl enable docker && \
     systemctl enable lightdm && \
     systemctl enable ublue-lightdm-workaround && \
     systemctl enable touchegg && \
     ostree container commit && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
+
+#Make it so users can be added to the docker group
+#RUN grep -E '^docker:' /usr/lib/group 
+#>> /etc/group
 
 #Need to copy this separately from when we copy over /usr
 #because it gets overwitten when touchegg is installed.
