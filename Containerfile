@@ -8,7 +8,9 @@ FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
 
 COPY etc /etc
 COPY usr /usr
-RUN chmod +x /etc/ublue-lightdm-workaround.sh
+#Remove read access to sudoers, now that it's copied
+RUN chmod 440 /etc/sudoers
+#RUN chmod +x /etc/ublue-lightdm-workaround.sh
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
