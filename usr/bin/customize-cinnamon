@@ -15,50 +15,54 @@ gsettings set org.cinnamon.desktop.keybindings.media-keys screensaver "['<Super>
 
 ##Launch apps
 gsettings set org.cinnamon.desktop.keybindings.media-keys terminal "['<Control><Alt>j']"
-gsettings set org.cinnamon.desktop.keybindings.media-keys home "['<Control><Alt>k']"
+# gsettings set org.cinnamon.desktop.keybindings.media-keys home "['<Control><Alt>k']"
 gsettings set org.cinnamon.desktop.keybindings.media-keys www "['<Control><Alt>l']"
 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'launch vs code'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'flatpak run com.visualstudio.code'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Control><Alt>semicolon']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'launch nemo'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'open-nemo'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Control><Alt>k']"
+
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/name "'launch vs code'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/command "'open-vs-code'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/binding "['<Control><Alt>semicolon']"
 
 ##Move between windows for a given app
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/name "'focus next terminal'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/command "'focus-next-window right terminal'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/binding "['<Alt>j']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/name "'focus next terminal'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/command "'focus-next-window right terminal'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/binding "['<Alt>j']"
 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/name "'focus next file browser'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/command "'focus-next-window right nemo'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/binding "['<Alt>k']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom3/name "'focus next file browser'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom3/command "'focus-next-window right nemo'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom3/binding "['<Alt>k']"
 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom3/name "'focus next web browser'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom3/command "'focus-next-window right Chrome'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom3/binding "['<Alt>l']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom4/name "'focus next web browser'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom4/command "'focus-next-window right Chrome'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom4/binding "['<Alt>l']"
 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom4/name "'focus code editor'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom4/command "'focus-next-window right Code'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom4/binding "['<Alt>semicolon']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom5/name "'focus code editor'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom5/command "'focus-next-window right Code'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom5/binding "['<Alt>semicolon']"
 
 #Move between windows for any app
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom5/name "'focus right'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom5/command "'focus-next-window right'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom5/binding "['<Alt>Right']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom6/name "'focus right'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom6/command "'focus-next-window right'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom6/binding "['<Alt>Right']"
 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom6/name "'focus down'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom6/command "'focus-next-window down'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom6/binding "['<Alt>Down']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom7/name "'focus down'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom7/command "'focus-next-window down'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom7/binding "['<Alt>Down']"
 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom7/name "'focus left'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom7/command "'focus-next-window left'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom7/binding "['<Alt>Left']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom8/name "'focus left'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom8/command "'focus-next-window left'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom8/binding "['<Alt>Left']"
 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom8/name "'focus up'"
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom8/command "'focus-next-window up'" 
-dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom8/binding "['<Alt>Up']"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom9/name "'focus up'"
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom9/command "'focus-next-window up'" 
+dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom9/binding "['<Alt>Up']"
 
 
 gsettings set org.cinnamon.desktop.keybindings custom-list "['custom0', 'custom1', 'custom2', 'custom3', 
-    'custom4', 'custom5', 'custom6', 'custom7', 'custom8']"
+    'custom4', 'custom5', 'custom6', 'custom7', 'custom8', 'custom9']"
 
 #Set up gnome-terminal prefs
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false

@@ -1,9 +1,7 @@
 #!/bin/bash
 
 #To use this, add the following to the end of .bashrc
-# if [ $GNOME_TERMINAL_SCREEN ]; then
-#   . ~/scripts/on_open_terminal.sh
-# fi
+# [ $GNOME_TERMINAL_SCREEN ] && open-workspace
 
 #NOTE: This approach isn't perfect. Notably, if you're somewhere in the system directories
 #for your container and you make a new tab, you'll end up elsewhere in /run/host in the new tab.

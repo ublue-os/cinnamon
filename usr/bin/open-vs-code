@@ -16,7 +16,5 @@ assignment=${assignments[$col]}
 if [ $assignment ]; then
   distrobox enter -nw $assignment -- code
 else
-  code
+  flatpak run com.visualstudio.code
 fi
-
-echo $assignment
