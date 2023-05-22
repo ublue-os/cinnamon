@@ -1,7 +1,7 @@
 {
     "numCols": {
         "type": "spinbutton",
-        "default": 2,
+        "default": 4,
         "min": 1,
         "max": 12,
         "step": 1,
@@ -10,7 +10,7 @@
     },
     "numRows": {
         "type": "spinbutton",
-        "default": 1,
+        "default": 2,
         "min": 1,
         "max": 6,
         "step": 1,
@@ -20,7 +20,7 @@
     "style": {
         "type": "combobox",
         "description": "Style:",
-        "default": "single-row",
+        "default": "grid",
         "options": {
             "Single Row": "single-row",
             "Grid": "grid"

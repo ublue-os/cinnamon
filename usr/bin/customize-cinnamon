@@ -86,3 +86,7 @@ dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/bold-is-bright true
 
 #Set up xed (text editor) prefs
 gsettings set org.x.editor.preferences.editor scheme "'oblivion'"
+
+#Set up system prefs for workspaces
+gsettings set org.cinnamon workspace-osd-visible false
+gsettings set org.cinnamon.muffin workspace-cycle true
