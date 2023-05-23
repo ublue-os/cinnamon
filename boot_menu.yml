@@ -1,0 +1,15 @@
+ublue_variants:
+  - label: a-lovett/cinnamon
+    ks: /kickstart/ublue-os.ks
+    flavors:
+      - label: cinnamon-main
+        info: Cinnamon
+  - label: a-lovett/cinnamon-nvidia
+    ks: /kickstart/ublue-os-nvidia.ks
+    subvariants:
+      - label: latest driver
+      - label: 470xx driver
+        suffix: -470
+    flavors:
+      - label: cinnamon-nvidia
+        info: Cinnamon
