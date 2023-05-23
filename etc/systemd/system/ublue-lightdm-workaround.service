@@ -5,12 +5,12 @@
 # This also fixes an issue with the docker group not being added
 
 [Unit]
-Description=Work around broken LightDM install, and other group issues
+Description=Work around broken LightDM install
 Before=lightdm.service
 
 [Service]
 Type=oneshot
-ExecStart=/etc/ublue-group-workaround.sh
+ExecStart=/etc/ublue-lightdm-workaround.sh
 RemainAfterExit=yes
 
 [Install]

@@ -3,7 +3,16 @@ alias google-chrome='flatpak run com.google.Chrome'
 
 #Shortcut for 'docker run -it --rm <image> <optional additional args>
 #Run as 'drun <image> <optional additional args>'
+#Adds the user to the docker group if they are not already a member.
 function drun() {
+    if ! [ "$(groups | grep docker)" ]; then
+        sudo groupadd docker
+        current_user=$USER
+        sudo usermod -a -G docker $current_user
+        echo "Added $USER to docker group. After restarting, you can run docker without sudo."
+        return 0
+    fi
+
     image=$1
 
     if [ $2 ]; then

@@ -8,6 +8,4 @@ if [ ! -d /var/lib/lightdm-data ]; then mkdir /var/lib/lightdm-data; fi
 getent group lightdm >/dev/null || groupadd -r lightdm
 getent passwd lightdm >/dev/null || useradd -g lightdm -M -d /var/lib/lightdm -s /sbin/nologin -r lightdm
 
-getent group docker >/dev/null || groupadd -r docker
-
 systemctl set-default graphical.target
