@@ -1,6 +1,8 @@
 alias code='flatpak run com.visualstudio.code'
 alias google-chrome='flatpak run com.google.Chrome'
 
+alias rb='systemctl reboot'
+
 #Shortcut for 'docker run -it --rm <image> <optional additional args>
 #Run as 'drun <image> <optional additional args>'
 #Adds the user to the docker group if they are not already a member.

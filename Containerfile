@@ -10,7 +10,6 @@ COPY etc /etc
 COPY usr /usr
 #Remove read access to sudoers, now that it's copied
 RUN chmod 440 /etc/sudoers
-#RUN chmod +x /etc/ublue-lightdm-workaround.sh
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
@@ -29,9 +28,8 @@ RUN /tmp/build.sh && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
 
-#Make it so users can be added to the docker group
-#RUN grep -E '^docker:' /usr/lib/group 
-#>> /etc/group
+#Get rid of system sounds
+RUN rm /usr/share/cinnamon-control-center/sounds/*
 
 #Need to copy this separately from when we copy over /usr
 #because it gets overwitten when touchegg is installed.

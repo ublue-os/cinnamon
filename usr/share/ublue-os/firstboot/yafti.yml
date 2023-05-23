@@ -43,7 +43,8 @@ screens:
           - Photo Organizer: org.gnome.Shotwell
           - Fedora Media Writer: org.fedoraproject.MediaWriter
           - Flatseal Permissions Manager: com.github.tchx84.Flatseal
-          - Mozilla Firefox: org.mozilla.firefox
+          - Google Chrome: com.google.Chrome
+          - Visual Studio Code: com.visualstudio.code
         Themes:
           description: Cinnamon (Mint-Y) themes for flatpak apps (not supported in all apps)
           default: true
@@ -72,16 +73,16 @@ screens:
           - Mint-Y-Dark-Teal: org.gtk.Gtk3theme.Mint-Y-Dark-Teal
         Gestures:
           description: Configure touchpad gestures
-          default: false
+          default: true
           packages:
           - Touché: com.github.joseexposito.touche
         Web Browsers:
-          description: Additional browsers to complement Firefox
+          description: Additional browsers to complement Chrome
           default: false
           packages:
           - Brave: com.brave.Browser
-          - Google Chrome: com.google.Chrome
           - Microsoft Edge: com.microsoft.Edge
+          - Mozilla Firefox: org.mozilla.firefox
           - Opera: com.opera.Opera
         Communication:
           description: Apps for emails, chatting, and sharing
@@ -92,7 +93,7 @@ screens:
           - Thunderbird Email: org.mozilla.Thunderbird
           - Transmission: com.transmissionbt.Transmission
         Productivity:
-          description: Create papers, spreadsheets, or code
+          description: Create papers or spreadsheets
           default: false
           packages:
           - LibreOffice: org.libreoffice.LibreOffice
@@ -101,7 +102,6 @@ screens:
           - Slack: com.slack.Slack
           - Standard Notes: org.standardnotes.standardnotes
           - Thunderbird Email: org.mozilla.Thunderbird
-          - Visual Studio Code: com.visualstudio.code
         Gaming:
           description: Game on!
           default: false
