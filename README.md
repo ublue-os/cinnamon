@@ -16,4 +16,4 @@ or if you have an NVIDIA GPU:
 
 ## Caveats
 
-- This is a test image and is WIP
+- Thanks to @jerbmega for the lightdm workaround!
