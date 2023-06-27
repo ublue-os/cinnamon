@@ -7,7 +7,6 @@
                 "python3-pip",
                 "timeshift",
                 "touchegg",
-
                 "NetworkManager-adsl",
                 "NetworkManager-bluetooth",
                 "NetworkManager-iodine-gnome",
@@ -27,6 +26,7 @@
                 "cinnamon-control-center",
                 "cinnamon-screensaver",
                 "eom",
+                "ffmpegthumbnailer",
                 "firewall-config",
                 "gnome-disk-utility",
                 "gnome-screenshot",
@@ -49,6 +49,7 @@
                 "pipewire-pulseaudio",
                 "powerline",
                 "qgnomeplatform-qt5",
+                "raw-thumbnailer",
                 "redshift-gtk",
                 "sane-backends-drivers-scanners",
                 "setroubleshoot",
