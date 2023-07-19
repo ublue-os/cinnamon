@@ -19,11 +19,11 @@ Select "Install ublue-os/cinnamon" from the menu
 
 ## Rebase over Fedora Silverblue
 
-    rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/cinnamon-main:38
+    rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/cinnamon-main:38
 
 or if you have an NVIDIA GPU:
 
-    rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/cinnamon-nvidia:38
+    rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/cinnamon-nvidia:38
 
 <br>
 
