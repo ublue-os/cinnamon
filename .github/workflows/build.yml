@@ -1,7 +1,7 @@
 name: Build and Push Image
 on:
   pull_request:
-  merge_group:    
+  merge_group:
   schedule:
     - cron: '20 22 * * *'  # 10:20pm everyday
   workflow_dispatch:
@@ -21,12 +21,17 @@ jobs:
       fail-fast: false
       matrix:
         image_flavor: [main, nvidia]
-        major_version: [38]
+        major_version: [38, 39]
         include:
+          - major_version: 39
+            is_latest_version: true
+            is_stable_version: false
+            is_gts_version: false
           - major_version: 38
             is_latest_version: true
             is_stable_version: true
-    steps: 
+            is_gts_version: true
+    steps:
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
         uses: actions/checkout@v4
@@ -63,6 +68,8 @@ jobs:
           if [[ "${{ matrix.is_latest_version }}" == "true" ]] && \
              [[ "${{ matrix.is_stable_version }}" == "true" ]]; then
               BUILD_TAGS+=("latest")
+          elif [[ "${{ matrix.is_gts_version }}" == "true" ]]; then
+              BUILD_TAGS+=("gts")
           fi
 
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
