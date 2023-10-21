@@ -181,5 +181,5 @@ jobs:
       needs: [push-ghcr]
       steps:
         - name: Exit
-        shell: bash
-        run: exit 0
+          shell: bash
+          run: exit 0
