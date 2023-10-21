@@ -1,0 +1,36 @@
+ublue_variants:
+  - label: ublue-os/cinnamon
+    ks: /kickstart/ublue-os.ks
+    flavors:
+      - label: cinnamon
+        info: Cinnamon
+  - label: ublue-os/cinnamon-nvidia
+    ks: /kickstart/ublue-os-nvidia.ks
+    flavors:
+      - label: cinnamon-nvidia
+        info: Cinnamon (For NVIDIA GPUs)
+  - label: ublue-os/cinnamon-asus
+    ks: /kickstart/ublue-os.ks
+    flavors:
+      - label: cinnamon-asus
+        info: Cinnamon (ASUS Edition)
+  - label: ublue-os/cinnamon-asus-nvidia
+    ks: /kickstart/ublue-os.ks
+    flavors:
+      - label: cinnamon-asus-nvidia
+        info: Cinnamon (ASUS Edition for NVIDIA GPUs)
+  - label: ublue-os/cinnamon-framework
+    ks: /kickstart/ublue-os.ks
+    flavors:
+      - label: cinnamon-framework
+        info: Cinnamon (Framework Edition)
+  - label: ublue-os/cinnamon-surface
+    ks: /kickstart/ublue-os.ks
+    flavors:
+      - label: cinnamon-surface
+        info: Cinnamon (Surface Edition)
+  - label: ublue-os/cinnamon-surface-nvidia
+    ks: /kickstart/ublue-os-nvidia.ks
+    flavors:
+      - label: cinnamon-surface-nvidia
+        info: Cinnamon (Surface Edition for NVIDIA GPUs)
